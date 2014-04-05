@@ -15,16 +15,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="161dp"
-        android:text="Capture Data" />
+        android:layout_marginBottom="94dp"
+        android:text="Go to Camera" />
 
-    <Button
-        android:id="@+id/buttonExit"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonCapture"
-        android:layout_alignTop="@+id/buttonCapture"
-        android:layout_marginTop="65dp"
-        android:text="Exit" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="122dp"
+        android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>
