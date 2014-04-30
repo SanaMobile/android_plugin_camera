@@ -13,6 +13,7 @@ import com.example.cam.R;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.hardware.Camera;
@@ -27,17 +28,42 @@ import android.widget.FrameLayout;
 public class MainActivity extends Activity {
 
 	protected static final String TAG = null;
+	protected static final String TAG1 = "hello";
 	protected static final Throwable e = null;
 	private Camera mCamera;
 	private CameraPreview mPreview;
 	public static final int MEDIA_TYPE_IMAGE = 1;
+	
+		
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        String flash = getIntent().getStringExtra("concept");
+        try{
+        	String flash = getIntent().getStringExtra("FLASHMODE");
+        	if(flash.equals("Yes"))
+        	{
+            Camera.Parameters params = mCamera.getParameters();
+            // set the focus mode
+            params.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+            // set Camera parameters
+            mCamera.setParameters(params);
+        	}
+        	else
+        	{
+        		Camera.Parameters params = mCamera.getParameters();
+                // set the focus mode
+                params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                // set Camera parameters
+                mCamera.setParameters(params);
+        	}
+        	}
+        catch(Exception e)
+        {
+        	Log.e(TAG1, "Error getting intent " + e.toString());
+        }
         
         mCamera = getCameraInstance();
         mPreview = new CameraPreview(this, mCamera);
@@ -45,12 +71,6 @@ public class MainActivity extends Activity {
         preview.addView(mPreview);
         
         
-        
-        Camera.Parameters params = mCamera.getParameters();
-        // set the focus mode
-        params.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
-        // set Camera parameters
-        mCamera.setParameters(params);
         
         
      // Add a listener to the Capture button
