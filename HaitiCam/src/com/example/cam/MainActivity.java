@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -33,7 +34,7 @@ public class MainActivity extends Activity {
 	private Camera mCamera;
 	private CameraPreview mPreview;
 	public static final int MEDIA_TYPE_IMAGE = 1;
-	
+	Camera.Parameters params;
 		
 	
 	@Override
@@ -41,19 +42,33 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        mCamera = getCameraInstance();
+        mPreview = new CameraPreview(this, mCamera);
+        FrameLayout preview = (FrameLayout) findViewById(R.id.frameLayout1);
+        preview.addView(mPreview);
+        
+        params = mCamera.getParameters();
+        params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+        mCamera.setParameters(params);
+        
+        Log.i(MainActivity.class.getSimpleName(),"Concept:"+getIntent().getStringExtra("concept"));
         try{
-        	String flash = getIntent().getStringExtra("FLASHMODE");
-        	if(flash.equals("Yes"))
+        	String flash = getIntent().getStringExtra("concept");
+        	if(!TextUtils.isEmpty(flash) && flash.contains("CAMERAPLUGIN_FLASH"))
         	{
-            Camera.Parameters params = mCamera.getParameters();
+                Log.i(MainActivity.class.getSimpleName(),"Inside if loop");
+
+            params = mCamera.getParameters();
             // set the focus mode
+            Log.i(MainActivity.class.getSimpleName(),"got camera parameters");
             params.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
             // set Camera parameters
+            Log.i(MainActivity.class.getSimpleName(),"set flash camera parameters");
             mCamera.setParameters(params);
         	}
         	else
         	{
-        		Camera.Parameters params = mCamera.getParameters();
+        		params = mCamera.getParameters();
                 // set the focus mode
                 params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
                 // set Camera parameters
@@ -64,11 +79,6 @@ public class MainActivity extends Activity {
         {
         	Log.e(TAG1, "Error getting intent " + e.toString());
         }
-        
-        mCamera = getCameraInstance();
-        mPreview = new CameraPreview(this, mCamera);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.frameLayout1);
-        preview.addView(mPreview);
         
         
         
