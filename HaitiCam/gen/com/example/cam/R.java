@@ -28,15 +28,18 @@ public final class R {
         public static final int cam_icon=0x7f020001;
         public static final int haiticam=0x7f020002;
         public static final int ic_launcher=0x7f020003;
+        public static final int share3=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090006;
-        public static final int buttonCapture=0x7f090001;
+        public static final int CAMERA_ZOOM_CONTROLS=0x7f090003;
+        public static final int action_settings=0x7f090008;
         public static final int frameLayout1=0x7f090000;
-        public static final int imageDetails=0x7f090002;
-        public static final int message=0x7f090003;
-        public static final int photo=0x7f090005;
-        public static final int showImg=0x7f090004;
+        public static final int imageButton1=0x7f090001;
+        public static final int imageDetails=0x7f090004;
+        public static final int message=0x7f090005;
+        public static final int photo=0x7f090007;
+        public static final int showImg=0x7f090006;
+        public static final int surface_camera=0x7f090002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
