@@ -8,8 +8,8 @@
                     android:normalScreens="true" 
                     android:smallScreens="true" android:xlargeScreens="true"/>
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="7"
+        android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.CAMERA" />
 	<uses-feature android:name="android.hardware.camera" android:required="true" />
@@ -20,8 +20,8 @@
         android:allowBackup="true"
         android:icon="@drawable/cam"
         android:label="@string/app_name"
-        
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        
         <activity
             android:name="com.example.cam.MainActivity"
             android:label="@string/app_name" 
@@ -33,18 +33,30 @@
             <intent-filter>
                 <action android:name="intent.action.CAPTURE_IMAGE" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/jpeg"/>
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.CAMERA_BUTTON" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter> 
         </activity>
+        
         <activity   android:name="com.example.cam.CameraPreview" 
             		android:label="@string/app_name"     >
+            <action android:name="intent.action.CAPTURE_IMAGE_VIEW" />
+            	<intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/jpeg"/>
+                 </intent-filter>
      		<intent-filter> 
        			<action android:name="com.example.cam.VIEW" />  
          		<category android:name="android.intent.category.DEFAULT" />  
     		</intent-filter>   
+  		</activity>
+  		
+  		<activity   android:name=".ImagePreview" 
+            		android:label="@string/app_name"     >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+                
   		</activity>
     </application>
 

@@ -13,24 +13,27 @@
      android:id="@+id/frameLayout1"
      android:layout_width="fill_parent"
      android:layout_height="fill_parent"
-     android:layout_alignParentTop="true" >
+     android:layout_alignParentBottom="true"
+     android:layout_alignParentRight="true" >
 
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="114dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="bottom|center"
-        android:background="@color/Black"
-        android:src="@drawable/share3" />
-    <ZoomControls
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_alignBottom="@+id/surface_camera"
-android:layout_centerInParent="true"
-android:id="@+id/CAMERA_ZOOM_CONTROLS">
-</ZoomControls>
+     <ImageButton
+         android:id="@+id/imageButton1"
+         android:layout_width="wrap_content"
+         android:layout_height="110dp"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:layout_gravity="bottom|center"
+         android:background="@null"
+         android:src="@drawable/icon" />
 
-    </FrameLayout>
+     <ZoomControls
+         android:id="@+id/CAMERA_ZOOM_CONTROLS"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBottom="@+id/surface_camera"
+         android:layout_centerInParent="true" />
+
+     
+ </FrameLayout>
+
 </RelativeLayout>

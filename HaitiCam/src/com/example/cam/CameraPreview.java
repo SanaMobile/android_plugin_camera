@@ -20,7 +20,8 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 	private SurfaceHolder mHolder;
     private Camera mCamera;
     Camera.Parameters params;
-	
+    private CameraPreview mPreview;
+    
 
     public CameraPreview(Context context, Camera camera) {
         super(context);
@@ -34,22 +35,41 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
+    
+    
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, now tell the camera where to draw the preview.
-    	mCamera.setDisplayOrientation(90);
-        try {
-           // mCamera.setPreviewDisplay(holder);
-           mCamera.setPreviewDisplay(mHolder);
+    	try {
+            // This case can actually happen if the user opens and closes the camera too frequently.
+            mCamera = Camera.open();
+            mCamera.setPreviewDisplay(holder);
+            mCamera.setPreviewDisplay(mHolder);
             mCamera.startPreview();
-        } catch (IOException e) {
-            Log.d(TAG, "Error setting camera preview: " + e.getMessage());
+        } catch(Exception e) {
+            Log.e(TAG, "Surfacecreatederror");
         }
+        
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
-        // empty. Take care of releasing the Camera preview in your activity.
+        // Take care of releasing the Camera preview in your activity.
+    	if (mCamera != null) {
+            mCamera.stopPreview();
+            mCamera.setPreviewCallback(null);
+            mCamera.release();
+            mCamera = null;
+        }
+      Log.e("surfaceDestroyed", "surfaceDestroyed");
+
+    }
+    
+    public void surfacePaused(SurfaceHolder holder) {
+        // Take care of releasing the Camera preview in your activity.
+    	Log.e("TABACT", "surfacepaused");
+    	mPreview.setVisibility(View.INVISIBLE);
     }
 
+    
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
         // If your preview can change or rotate, take care of those events here.
         // Make sure to stop the preview before resizing or reformatting it.
@@ -71,6 +91,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         // reformatting changes here
         // start preview with new settings
         try {
+        	mCamera.setDisplayOrientation(90);
             mCamera.setPreviewDisplay(mHolder);
             mCamera.startPreview();
 
