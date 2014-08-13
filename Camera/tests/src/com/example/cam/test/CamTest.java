@@ -1,10 +1,10 @@
-package com.example.cam.test;
+package com.sana.android.plugin.camera.test;
 
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.ImageButton;
-import com.example.cam.MainActivity;
+import com.sana.android.plugin.camera.MainActivity;
 
 
 public class CamTest extends ActivityInstrumentationTestCase2<MainActivity> {
@@ -15,7 +15,7 @@ public class CamTest extends ActivityInstrumentationTestCase2<MainActivity> {
 	
 	@SuppressWarnings("deprecation")
 	public CamTest(String name) {
-		super("com.example.cam",MainActivity.class);
+		super("com.sana.android.plugin.camera",MainActivity.class);
 		setName(name);
 	}
 
@@ -35,8 +35,8 @@ public class CamTest extends ActivityInstrumentationTestCase2<MainActivity> {
 	}
 	*/
 	public void testViewsButtonCapture(){
-		button = (ImageButton)activity.findViewById(com.example.cam.R.id.imageButton1);
-		assertNotNull(activity.findViewById(com.example.cam.R.id.imageButton1));
+		button = (ImageButton)activity.findViewById(com.sana.android.plugin.camera.R.id.imageButton1);
+		assertNotNull(activity.findViewById(com.sana.android.plugin.camera.R.id.imageButton1));
 	    
 		activity.runOnUiThread(new Runnable() {
             @Override

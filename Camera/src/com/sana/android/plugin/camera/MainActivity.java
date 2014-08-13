@@ -1,4 +1,4 @@
-package com.example.cam;
+package com.sana.android.plugin.camera;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,8 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import com.example.cam.CameraPreview;
-import com.example.cam.R;
+import com.sana.android.plugin.camera.CameraPreview;
+import com.sana.android.plugin.camera.R;
 
 import android.media.AudioManager;
 import android.net.Uri;

@@ -1,4 +1,4 @@
-package com.example.cam;
+package com.sana.android.plugin.camera;
 
 
 import java.io.IOException;

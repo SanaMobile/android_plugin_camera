@@ -1,4 +1,4 @@
-package com.example.cam;
+package com.sana.android.plugin.camera;
 
 
 import java.io.ByteArrayOutputStream;
@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import com.sana.android.plugin.camera.R;
 
 public class ImagePreview extends Activity{
 
