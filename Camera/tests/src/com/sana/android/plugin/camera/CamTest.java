@@ -1,4 +1,4 @@
-package com.sana.android.plugin.camera.test;
+package com.sana.android.plugin.camera;
 
 import android.app.Instrumentation;
 import android.content.Intent;
